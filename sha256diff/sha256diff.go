@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"mybytes"
+	"github.com/robert-impey/go-experiments/mybytes"
 )
 
 func main() {
