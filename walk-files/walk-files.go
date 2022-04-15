@@ -25,7 +25,7 @@ func walker(path string, info os.FileInfo, err error) error {
 		fmt.Println(err)
 		return err
 	} else {
-		fmt.Println(info.Name())
+		fmt.Println(path)
 	}
 	return nil
 }
