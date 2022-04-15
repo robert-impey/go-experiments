@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"mybytes"
+	"github.com/robert-impey/go-experiments/mybytes"
 )
 
 func main() {
