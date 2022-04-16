@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	"golang-book/chapter11/math"
+
+	"github.com/robert-impey/go-experiments/golang-book/chapter11/math"
 )
 
 func main() {
