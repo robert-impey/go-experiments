@@ -3,19 +3,24 @@ package main
 
 import (
 	"fmt"
+	"github.com/loov/hrtime"
 	"os"
 	"strings"
-	"time"
 )
 
 func main() {
-	start := time.Now()
+	sep := " "
+	var s string
 
-	s := strings.Join(os.Args[1:], " ")
+	const numberOfExperiments = 4096
 
-	nsec := time.Since(start).Nanoseconds()
+	bench := hrtime.NewBenchmark(numberOfExperiments)
+	for bench.Next() {
+		s = strings.Join(os.Args[1:], sep)
+	}
 
 	fmt.Printf("String length %d\n", len(s))
 
-	fmt.Printf("Join echo took %d nanoseconds\n", nsec)
+	fmt.Printf("Join echo times\n")
+	fmt.Println(bench.Histogram(10))
 }

@@ -3,21 +3,25 @@ package main
 
 import (
 	"fmt"
+	"github.com/loov/hrtime"
 	"os"
-	"time"
 )
 
 func main() {
-	var s, sep string
-	start := time.Now()
+	sep := " "
+	var s string
 
-	for _, arg := range os.Args[1:] {
-		s += sep + arg
-		sep = " "
+	const numberOfExperiments = 4096
+
+	bench := hrtime.NewBenchmark(numberOfExperiments)
+	for bench.Next() {
+		for _, arg := range os.Args[1:] {
+			s += sep + arg
+		}
 	}
 
-	nsec := time.Since(start).Nanoseconds()
-
 	fmt.Printf("String length %d\n", len(s))
-	fmt.Printf("Loop echo took %d nanoseconds\n", nsec)
+
+	fmt.Printf("Loop echo times\n")
+	fmt.Println(bench.Histogram(10))
 }
