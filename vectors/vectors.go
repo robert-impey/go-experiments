@@ -5,9 +5,9 @@ import (
 	"math"
 )
 
-// See Page 30 of "Linear Algebra for Dummies"
-
 func main() {
+	// See Page 30 of "Linear Algebra for Dummies"
+	// Calculate the magnitude of a vector.
 	xs := []float64{3, 2, 4}
 
 	sumOfSquares := 0.0
@@ -16,5 +16,7 @@ func main() {
 		sumOfSquares += x * x
 	}
 
-	fmt.Println(math.Sqrt(sumOfSquares))
+	mag := math.Sqrt(sumOfSquares)
+
+	fmt.Println(mag)
 }
