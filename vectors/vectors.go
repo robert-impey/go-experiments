@@ -36,7 +36,7 @@ func main() {
 		fmt.Println(elementOfSum)
 	}
 
-	// Dot product of two vectors
+	// Dot product of two vectors (page 37)
 	us := []float64{4, -2, 0, 1}
 	vs := []float64{-1, -3, 1, 5}
 
