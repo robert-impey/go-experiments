@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"math"
 	"strings"
@@ -18,16 +19,16 @@ func main() {
 	// Sum of Vectors (page 28)
 	a := []float64{2, 4}
 	b := []float64{3, 1}
+	fmt.Printf("a = %s\n", vectorToString(a))
+	fmt.Printf("b = %s\n", vectorToString(b))
 
-	sumOfAAndB := make([]float64, len(a))
+	sumOfAAndB, err := calcSum(a, b)
 
-	for i, elementOfA := range a {
-		elementOfB := b[i]
-		sumOfAAndB[i] = elementOfA + elementOfB
+	if err == nil {
+		fmt.Printf("The sum of a and b %s\n", vectorToString(sumOfAAndB))
+	} else {
+		fmt.Errorf("Error: %s\n", err)
 	}
-
-	fmt.Println("The sum of A and B")
-	fmt.Println(vectorToString(sumOfAAndB))
 
 	// Dot product of two vectors (page 37)
 	us := []float64{4, -2, 0, 1}
@@ -70,4 +71,19 @@ func calcMagnitude(xs []float64) float64 {
 	}
 
 	return math.Sqrt(sumOfSquares)
+}
+
+func calcSum(xs []float64, ys []float64) ([]float64, error) {
+	if len(xs) != len(ys) {
+		return nil, errors.New("mismatched lengths")
+	}
+
+	sumOfXsAndYs := make([]float64, len(xs))
+
+	for i, x := range xs {
+		y := ys[i]
+		sumOfXsAndYs[i] = x + y
+	}
+
+	return sumOfXsAndYs, nil
 }
