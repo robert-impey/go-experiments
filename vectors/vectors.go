@@ -10,16 +10,10 @@ func main() {
 	// See Page 30 of "Linear Algebra for Dummies"
 	// Calculate the magnitude of a vector.
 	xs := []float64{3, 2, 4}
+	fmt.Printf("xs = %s\n", vectorToString(xs))
+	mag := calcMagnitude(xs)
 
-	sumOfSquares := 0.0
-
-	for _, x := range xs {
-		sumOfSquares += x * x
-	}
-
-	mag := math.Sqrt(sumOfSquares)
-
-	fmt.Println(mag)
+	fmt.Printf("magnitude of xs = %f\n", mag)
 
 	// Sum of Vectors (page 28)
 	a := []float64{2, 4}
@@ -33,7 +27,7 @@ func main() {
 	}
 
 	fmt.Println("The sum of A and B")
-	printVector(sumOfAAndB)
+	fmt.Println(vectorToString(sumOfAAndB))
 
 	// Dot product of two vectors (page 37)
 	us := []float64{4, -2, 0, 1}
@@ -47,7 +41,7 @@ func main() {
 	}
 
 	fmt.Println("The dot product items of 2 vectors")
-	printVector(dotProductItems)
+	fmt.Println(vectorToString(dotProductItems))
 
 	dotProduct := 0.0
 	for _, elem := range dotProductItems {
@@ -57,13 +51,23 @@ func main() {
 	fmt.Printf("The dot product: %f\n", dotProduct)
 }
 
-func printVector(xs []float64) {
-	fmt.Print("[")
+func vectorToString(xs []float64) string {
 	xStrs := make([]string, len(xs))
 	for i, x := range xs {
 		xStrs[i] = fmt.Sprintf("%f", x)
 	}
 
-	fmt.Print(strings.Join(xStrs, ", "))
-	fmt.Println("]")
+	fmt.Print()
+
+	return fmt.Sprintf("[%s]", strings.Join(xStrs, ", "))
+}
+
+func calcMagnitude(xs []float64) float64 {
+	sumOfSquares := 0.0
+
+	for _, x := range xs {
+		sumOfSquares += x * x
+	}
+
+	return math.Sqrt(sumOfSquares)
 }
