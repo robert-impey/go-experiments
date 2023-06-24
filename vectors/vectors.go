@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math"
+	"strings"
 )
 
 func main() {
@@ -32,9 +33,7 @@ func main() {
 	}
 
 	fmt.Println("The sum of A and B")
-	for _, elementOfSum := range sumOfAAndB {
-		fmt.Println(elementOfSum)
-	}
+	printVector(sumOfAAndB)
 
 	// Dot product of two vectors (page 37)
 	us := []float64{4, -2, 0, 1}
@@ -48,9 +47,7 @@ func main() {
 	}
 
 	fmt.Println("The dot product items of 2 vectors")
-	for _, elem := range dotProductItems {
-		fmt.Println(elem)
-	}
+	printVector(dotProductItems)
 
 	dotProduct := 0.0
 	for _, elem := range dotProductItems {
@@ -58,4 +55,15 @@ func main() {
 	}
 
 	fmt.Printf("The dot product: %f\n", dotProduct)
+}
+
+func printVector(xs []float64) {
+	fmt.Print("[")
+	xStrs := make([]string, len(xs))
+	for i, x := range xs {
+		xStrs[i] = fmt.Sprintf("%f", x)
+	}
+
+	fmt.Print(strings.Join(xStrs, ", "))
+	fmt.Println("]")
 }
