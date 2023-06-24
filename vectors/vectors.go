@@ -31,25 +31,18 @@ func main() {
 	}
 
 	// Dot product of two vectors (page 37)
-	us := []float64{4, -2, 0, 1}
-	vs := []float64{-1, -3, 1, 5}
+	u := []float64{4, -2, 0, 1}
+	v := []float64{-1, -3, 1, 5}
+	fmt.Printf("u = %s\n", vectorToString(u))
+	fmt.Printf("v = %s\n", vectorToString(v))
 
-	dotProductItems := make([]float64, len(us))
+	dotProduct, err := calcDotProduct(u, v)
 
-	for i, u := range us {
-		v := vs[i]
-		dotProductItems[i] = u * v
+	if err == nil {
+		fmt.Printf("The dot product of u and v: %f\n", dotProduct)
+	} else {
+		fmt.Errorf("Error: %s\n", err)
 	}
-
-	fmt.Println("The dot product items of 2 vectors")
-	fmt.Println(vectorToString(dotProductItems))
-
-	dotProduct := 0.0
-	for _, elem := range dotProductItems {
-		dotProduct += elem
-	}
-
-	fmt.Printf("The dot product: %f\n", dotProduct)
 }
 
 func vectorToString(xs []float64) string {
@@ -86,4 +79,19 @@ func calcSum(xs []float64, ys []float64) ([]float64, error) {
 	}
 
 	return sumOfXsAndYs, nil
+}
+
+func calcDotProduct(xs []float64, ys []float64) (float64, error) {
+	if len(xs) != len(ys) {
+		return 0, errors.New("mismatched lengths")
+	}
+
+	dotProduct := 0.0
+
+	for i, x := range xs {
+		y := ys[i]
+		dotProduct += x * y
+	}
+	
+	return dotProduct, nil
 }
