@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Walk Files - Local Scripts" type="GoApplicationRunConfiguration" factoryName="Go Application">
+    <module name="go-experiments" />
+    <working_directory value="$PROJECT_DIR$" />
+    <parameters value="$USER_HOME$/local-scripts" />
+    <kind value="PACKAGE" />
+    <package value="github.com/robert-impey/go-experiments/walk-files" />
+    <directory value="$PROJECT_DIR$" />
+    <filePath value="$PROJECT_DIR$/walk-files/walk-files.go" />
+    <method v="2" />
+  </configuration>
+</component>
