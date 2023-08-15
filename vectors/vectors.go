@@ -3,6 +3,7 @@ package main
 import (
 	"errors"
 	"fmt"
+	"log"
 	"math"
 	"strings"
 )
@@ -27,7 +28,7 @@ func main() {
 	if err == nil {
 		fmt.Printf("The sum of a and b %s\n", vectorToString(sumOfAAndB))
 	} else {
-		fmt.Errorf("Error: %s\n", err)
+		log.Fatal(fmt.Sprintf("Error: %s\n", err))
 	}
 
 	// Dot product of two vectors (page 37)
@@ -41,7 +42,7 @@ func main() {
 	if err == nil {
 		fmt.Printf("The dot product of u and v: %f\n", dotProduct)
 	} else {
-		fmt.Errorf("Error: %s\n", err)
+		log.Fatal(fmt.Sprintf("Error: %s\n", err))
 	}
 }
 
@@ -92,6 +93,6 @@ func calcDotProduct(xs []float64, ys []float64) (float64, error) {
 		y := ys[i]
 		dotProduct += x * y
 	}
-	
+
 	return dotProduct, nil
 }
