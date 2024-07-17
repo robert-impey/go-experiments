@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Days Old" type="GoApplicationRunConfiguration" factoryName="Go Application">
+    <module name="go-experiments" />
+    <working_directory value="$PROJECT_DIR$/daysOld" />
+    <parameters value="2016-06-20" />
+    <kind value="PACKAGE" />
+    <package value="github.com/robert-impey/go-experiments/daysOld" />
+    <directory value="$PROJECT_DIR$" />
+    <filePath value="$PROJECT_DIR$" />
+    <method v="2" />
+  </configuration>
+</component>
