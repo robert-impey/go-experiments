@@ -1,6 +1,6 @@
 module github.com/robert-impey/go-experiments
 
-go 1.18
+go 1.22
 
 require (
 	github.com/loov/hrtime v1.0.3
