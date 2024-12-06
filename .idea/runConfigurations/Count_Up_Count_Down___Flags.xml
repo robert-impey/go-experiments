@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Count Up Count Down | Flags" type="GoApplicationRunConfiguration" factoryName="Go Application">
+    <module name="go-experiments" />
+    <working_directory value="$PROJECT_DIR$" />
+    <parameters value="--p1 Anne --p2 Ben --p1st 3.0 --p2st 6.0 --p1sp 0.3 --p2sp 0.175" />
+    <kind value="PACKAGE" />
+    <package value="github.com/robert-impey/go-experiments/countUpCountDown" />
+    <directory value="$PROJECT_DIR$" />
+    <filePath value="$PROJECT_DIR$/countUpCountDown/main.go" />
+    <method v="2" />
+  </configuration>
+</component>
