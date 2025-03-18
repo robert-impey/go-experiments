@@ -20,7 +20,11 @@ func main() {
 	}
 }
 
-func walker(path string, info os.FileInfo, err error) error {
+func walker(
+	path string,
+	_ os.FileInfo,
+	err error,
+) error {
 	if err != nil {
 		fmt.Println(err)
 		return err
