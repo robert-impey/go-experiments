@@ -1,5 +1,7 @@
 package isPalindrome
 
+import "math"
+
 func IsPalindrome(x int) bool {
 	if x < 0 {
 		return false
@@ -9,15 +11,51 @@ func IsPalindrome(x int) bool {
 		return true
 	}
 
+	numDigits := countDigits(x)
+
+	halfDigits := numDigits / 2
+
+	for i := 0; i < halfDigits; i++ {
+		j := numDigits - i - 1
+		if getDigit(x, i) != getDigit(x, j) {
+			return false
+		}
+	}
+
 	return true
 }
 
-func getDigits(x int) []int {
-	digits := make([]int, 0)
-
-	return digits
+func intAbs(x int) int {
+	if x < 0 {
+		return -x
+	} else {
+		return x
+	}
 }
 
-func areDigitsPalindrome(digits []int) bool {
-	return true
+func getDigit(x int, i int) int {
+	absX := intAbs(x)
+
+	if i > countDigits(absX)-1 {
+		return -1
+	}
+
+	tenToI := int(math.Pow10(i))
+	xDivTenToI := absX / tenToI
+
+	return xDivTenToI % 10
+}
+
+func countDigits(x int) int {
+	absX := intAbs(x)
+	numDigits := 1
+
+	for ; ; numDigits++ {
+		absX /= 10
+		if absX == 0 {
+			break
+		}
+	}
+
+	return numDigits
 }
