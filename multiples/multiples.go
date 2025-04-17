@@ -8,7 +8,7 @@ import (
 func printMultiples(number int, numberOfMultiples int) {
 	currentTotal := 0
 
-	for i := 0; i < numberOfMultiples; i++ {
+	for range numberOfMultiples {
 		currentTotal += number
 		fmt.Println(currentTotal)
 	}
