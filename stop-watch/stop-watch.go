@@ -11,9 +11,9 @@ func main() {
 
 	max := 1000
 	total := 0
-	for i := 0; i < max; i++ {
+	for i := range max {
 		total += i
-		for j := 0; j < max; j++ {
+		for j := range max {
 			total += j
 		}
 	}
