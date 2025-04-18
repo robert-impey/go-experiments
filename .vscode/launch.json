@@ -11,6 +11,13 @@
             "mode": "auto",
             "program": "${workspaceFolder}/multiples",
             "args": ["--number", "6", "--numberOfMultiples", "7"],
+        },{
+            "name": "countUpCountDown",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${workspaceFolder}/countUpCountDown",
+            "args": ["--p1st", "1.0", "--p2st", "6.0", "--p2sp", "0.2", "--p2sp", "0.25"],
         }
     ]
 }
