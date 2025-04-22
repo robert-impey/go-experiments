@@ -1,3 +1,5 @@
+#!/snap/bin/pwsh
+
 param($exe, $inputDir, $outputDir)
 
 # E.g. 
