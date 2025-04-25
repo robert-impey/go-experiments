@@ -8,5 +8,7 @@ param($exe, $inputDir, $outputDir)
 $dictionaryFile = "$($inputDir)\british-english.txt"
 
 $fiveLetterWordsFile = "$($outputDir)\five-letter-words.txt"
-
 Start-Process $exe -NoNewWindow -Wait -ArgumentList 'find5LetterWords' -RedirectStandardInput $dictionaryFile -RedirectStandardOutput $fiveLetterWordsFile
+
+$allLatinFile = "$($outputDir)\five-letter-words-all-latin.txt"
+Start-Process $exe -NoNewWindow -Wait -ArgumentList 'removeWordsWithNonLatin' -RedirectStandardInput $fiveLetterWordsFile -RedirectStandardOutput $allLatinFile
