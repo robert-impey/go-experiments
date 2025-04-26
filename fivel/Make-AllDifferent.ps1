@@ -12,3 +12,6 @@ Start-Process $exe -NoNewWindow -Wait -ArgumentList 'find5LetterWords' -Redirect
 
 $allLatinFile = "$($outputDir)\five-letter-words-all-latin.txt"
 Start-Process $exe -NoNewWindow -Wait -ArgumentList 'removeWordsWithNonLatin' -RedirectStandardInput $fiveLetterWordsFile -RedirectStandardOutput $allLatinFile
+
+$upperFile = "$($outputDir)\five-letter-words-all-latin-upper.txt"
+Start-Process $exe -NoNewWindow -Wait -ArgumentList 'toUpper' -RedirectStandardInput $allLatinFile -RedirectStandardOutput $upperFile
