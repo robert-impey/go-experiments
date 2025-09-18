@@ -30,3 +30,20 @@ func TestConvertTemperature(t *testing.T) {
 		}
 	}
 }
+
+func TestMaxFreqSum(t *testing.T) {
+	cases := []struct {
+		s        string
+		expected int
+	}{
+		{"successes", 6},
+		{"aeiaeia", 3},
+	}
+
+	for _, c := range cases {
+		got := maxFreqSum(c.s)
+		if got != c.expected {
+			t.Errorf("maxFreqSum(%q) != %d, got %d\n", c.s, c.expected, got)
+		}
+	}
+}
