@@ -1,4 +1,4 @@
-package converttemperature
+package leetcode
 
 // https://leetcode.com/problems/convert-the-temperature/
 
