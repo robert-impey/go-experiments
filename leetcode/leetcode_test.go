@@ -47,3 +47,21 @@ func TestMaxFreqSum(t *testing.T) {
 		}
 	}
 }
+
+func TestFilterCharacters(t *testing.T) {
+	cases := []struct {
+		s        string
+		k        int
+		expected string
+	}{
+		{"aadbbcccca", 3, "dbb"},
+		{"xyz", 2, "xyz"},
+	}
+
+	for _, c := range cases {
+		got := filterCharacters(c.s, c.k)
+		if got != c.expected {
+			t.Errorf("filterCharacters(%q, %d) != %q, got %q\n", c.s, c.k, c.expected, got)
+		}
+	}
+}

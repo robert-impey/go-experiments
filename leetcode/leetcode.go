@@ -9,14 +9,7 @@ func convertTemperature(celsius float64) []float64 {
 // https://leetcode.com/problems/find-most-frequent-vowel-and-consonant/
 
 func maxFreqSum(s string) int {
-	charMap := make(map[rune]int)
-	for ch := 'a'; ch <= 'z'; ch++ {
-		charMap[ch] = 0
-	}
-
-	for _, ch := range s {
-		charMap[ch]++
-	}
+	charMap := countChars(s)
 
 	maxVowel := 0
 	vowels := "aeiou"
@@ -36,6 +29,19 @@ func maxFreqSum(s string) int {
 	return maxVowel + maxConsonant
 }
 
+func countChars(s string) map[rune]int {
+	charMap := make(map[rune]int)
+	for ch := 'a'; ch <= 'z'; ch++ {
+		charMap[ch] = 0
+	}
+
+	for _, ch := range s {
+		charMap[ch]++
+	}
+
+	return charMap
+}
+
 func contains(s string, ch rune) bool {
 	for _, c := range s {
 		if c == ch {
@@ -43,4 +49,17 @@ func contains(s string, ch rune) bool {
 		}
 	}
 	return false
+}
+
+// https://leetcode.com/problems/filter-characters-by-frequency/?envType=problem-list-v2&envId=vrsh0y11
+
+func filterCharacters(s string, k int) string {
+	charMap := countChars(s)
+	var result []rune
+	for _, ch := range s {
+		if charMap[ch] < k {
+			result = append(result, ch)
+		}
+	}
+	return string(result)
 }
