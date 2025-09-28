@@ -3,7 +3,7 @@
 param($exe, $inputDir, $outputDir)
 
 # E.g. 
-# > .\Make-AllDifferent.ps1 fivel.exe $env:DATA $env:DATA\FiveLetters\Go
+# > .\Make-AllDifferent.ps1 .\fivel.exe $env:DATA $env:DATA\FiveLetters\Go
 # or
 # > ./Make-AllDifferent.ps1 "$($pwd.Path)/fivel" $env:DATA $env:DATA/FiveLetters/Go
 
