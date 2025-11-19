@@ -10,6 +10,10 @@ func main() {
 		"HOME", // Works on Mac OSX
 		"HOMEDIR",
 		"USERPROFILE", // Works on Windows
+		"CONFIG",
+		"DATA",
+		"EXECUTABLES",
+		"LOCAL_SCRIPTS",
 	}
 
 	for _, envVar := range envVars {
