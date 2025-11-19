@@ -3,9 +3,10 @@ package main
 
 import (
 	"fmt"
-	"github.com/loov/hrtime"
 	"os"
 	"strings"
+
+	"github.com/loov/hrtime"
 )
 
 func main() {
