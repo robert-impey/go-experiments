@@ -19,6 +19,8 @@ func main() {
 	for _, envVar := range envVars {
 		if value, exists := os.LookupEnv(envVar); exists {
 			fmt.Printf("%s: %s\n", envVar, value)
+		} else {
+			fmt.Printf("%s has not been set\n", envVar)
 		}
 	}
 }
