@@ -51,7 +51,7 @@ func contains(s string, ch rune) bool {
 	return false
 }
 
-// https://leetcode.com/problems/filter-characters-by-frequency/?envType=problem-list-v2&envId=vrsh0y11
+// https://leetcode.com/problems/filter-characters-by-frequency/
 
 func filterCharacters(s string, k int) string {
 	charMap := countChars(s)
