@@ -2,6 +2,8 @@ package leetcode
 
 import (
 	"math"
+	"strconv"
+	"strings"
 	"testing"
 )
 
@@ -62,6 +64,32 @@ func TestFilterCharacters(t *testing.T) {
 		got := filterCharacters(c.s, c.k)
 		if got != c.expected {
 			t.Errorf("filterCharacters(%q, %d) != %q, got %q\n", c.s, c.k, c.expected, got)
+		}
+	}
+}
+
+func TestAlternatingSum(t *testing.T) {
+	cases := []struct {
+		nums     []int
+		expected int
+	}{
+		{[]int{1, 3, 5, 7}, -4},
+		{[]int{100}, 100},
+	}
+
+	for _, c := range cases {
+		got := alternatingSum(c.nums)
+		if got != c.expected {
+			// Convert ints to strings
+			strNums := make([]string, len(c.nums))
+			for i, v := range c.nums {
+				strNums[i] = strconv.Itoa(v)
+			}
+
+			// Join the strings with a comma
+			numsStr := strings.Join(strNums, ", ")
+
+			t.Errorf("alternatingSum(%s) != %d, got %d\n", numsStr, c.expected, got)
 		}
 	}
 }

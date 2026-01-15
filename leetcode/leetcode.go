@@ -63,3 +63,19 @@ func filterCharacters(s string, k int) string {
 	}
 	return string(result)
 }
+
+// https://leetcode.com/problems/compute-alternating-sum/
+
+func alternatingSum(nums []int) int {
+	sum := 0
+
+	for i, v := range nums {
+		if i%2 == 0 {
+			sum += v
+		} else {
+			sum -= v
+		}
+	}
+
+	return sum
+}
