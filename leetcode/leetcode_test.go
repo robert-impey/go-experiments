@@ -93,3 +93,22 @@ func TestAlternatingSum(t *testing.T) {
 		}
 	}
 }
+
+func TestFindClosest(t *testing.T) {
+	cases := []struct {
+		x, y, z  int
+		expected int
+	}{
+		{2, 7, 4, 1},
+		{2, 5, 6, 2},
+		{1, 5, 3, 0},
+	}
+
+	for _, c := range cases {
+		got := findClosest(c.x, c.y, c.z)
+		if got != c.expected {
+
+			t.Errorf("findClosest(%d, %d, %d) != %d, got %d\n", c.x, c.y, c.z, c.expected, got)
+		}
+	}
+}

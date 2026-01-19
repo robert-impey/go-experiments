@@ -79,3 +79,29 @@ func alternatingSum(nums []int) int {
 
 	return sum
 }
+
+// https://leetcode.com/problems/find-closest-person/
+
+func findClosest(x int, y int, z int) int {
+	diffX := z - x
+
+	if diffX < 0 {
+		diffX = -diffX
+	}
+
+	diffY := z - y
+
+	if diffY < 0 {
+		diffY = -diffY
+	}
+
+	if diffX < diffY {
+		return 1
+	}
+
+	if diffY < diffX {
+		return 2
+	}
+
+	return 0
+}
