@@ -112,3 +112,20 @@ func TestFindClosest(t *testing.T) {
 		}
 	}
 }
+
+func TestConvertDateToBinary(t *testing.T) {
+	cases := []struct {
+		input    string
+		expected string
+	}{
+		{"2080-02-29", "100000100000-10-11101"},
+		{"1900-01-01", "11101101100-1-1"},
+	}
+
+	for _, c := range cases {
+		got := convertDateToBinary(c.input)
+		if got != c.expected {
+			t.Errorf("convertDateToBinary(%q) != %q, got %q\n", c.input, c.expected, got)
+		}
+	}
+}

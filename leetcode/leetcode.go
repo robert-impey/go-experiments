@@ -1,5 +1,10 @@
 package leetcode
 
+import (
+	"fmt"
+	"strconv"
+)
+
 // https://leetcode.com/problems/convert-the-temperature/
 
 func convertTemperature(celsius float64) []float64 {
@@ -104,4 +109,36 @@ func findClosest(x int, y int, z int) int {
 	}
 
 	return 0
+}
+
+// https://leetcode.com/problems/convert-date-to-binary/
+
+func convertDateToBinary(date string) string {
+	year := date[0:4]
+	month := date[5:7]
+	day := date[8:10]
+
+	yearInt, _ := strconv.Atoi(year)
+	monthInt, _ := strconv.Atoi(month)
+	dayInt, _ := strconv.Atoi(day)
+
+	yearBin := toBinary(yearInt)
+	monthBin := toBinary(monthInt)
+	dayBin := toBinary(dayInt)
+
+	return fmt.Sprintf("%s-%s-%s", yearBin, monthBin, dayBin)
+}
+
+func toBinary(n int) string {
+	if n == 0 {
+		return "0"
+	}
+
+	result := ""
+	for n > 0 {
+		bit := n % 2
+		result = strconv.Itoa(bit) + result
+		n /= 2
+	}
+	return result
 }
