@@ -1,7 +1,5 @@
 package mybytes
 
-var pc [256]byte
-
 func GetBit(num uint8, pos uint8) bool {
 	return num>>pos&1 == 1
 }
