@@ -142,3 +142,17 @@ func toBinary(n int) string {
 	}
 	return result
 }
+
+// https://leetcode.com/problems/reverse-degree-of-a-string/
+
+func reverseDegree(s string) int {
+	sum := 0
+
+	for i, r := range s {
+		diffA := r - 'a'
+		diffZ := 26 - int(diffA)
+		sum += (1 + i) * diffZ
+	}
+
+	return sum
+}

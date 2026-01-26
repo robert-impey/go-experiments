@@ -129,3 +129,20 @@ func TestConvertDateToBinary(t *testing.T) {
 		}
 	}
 }
+
+func TestReverseDegree(t *testing.T) {
+	cases := []struct {
+		s        string
+		expected int
+	}{
+		{"abc", 148},
+		{"zaza", 160},
+	}
+
+	for _, c := range cases {
+		got := reverseDegree(c.s)
+		if got != c.expected {
+			t.Errorf("reverseDegree(%q) != %d, got %d\n", c.s, c.expected, got)
+		}
+	}
+}
