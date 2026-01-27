@@ -7,6 +7,31 @@ import (
 	"testing"
 )
 
+func TestContains(t *testing.T) {
+	cases := []struct {
+		s        string
+		ch       rune
+		expected bool
+	}{
+		{"abc", 'a', true},
+		{"abc", 'b', true},
+		{"abc", 'c', true},
+		{"abc", 'd', false},
+		{"", 'a', false},
+		{"Hello World", ' ', true},
+		{"Hello World", 'H', true},
+		{"Hello World", 'h', false},
+		{"世界", '世', true},
+	}
+
+	for _, c := range cases {
+		got := contains(c.s, c.ch)
+		if got != c.expected {
+			t.Errorf("contains(%q, %c) == %v, expected %v", c.s, c.ch, got, c.expected)
+		}
+	}
+}
+
 func TestCountChars(t *testing.T) {
 	cases := []struct {
 		s        string
