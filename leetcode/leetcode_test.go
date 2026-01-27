@@ -7,30 +7,7 @@ import (
 	"testing"
 )
 
-func TestContains(t *testing.T) {
-	cases := []struct {
-		s        string
-		ch       rune
-		expected bool
-	}{
-		{"abc", 'a', true},
-		{"abc", 'b', true},
-		{"abc", 'c', true},
-		{"abc", 'd', false},
-		{"", 'a', false},
-		{"Hello World", ' ', true},
-		{"Hello World", 'H', true},
-		{"Hello World", 'h', false},
-		{"世界", '世', true},
-	}
-
-	for _, c := range cases {
-		got := contains(c.s, c.ch)
-		if got != c.expected {
-			t.Errorf("contains(%q, %c) == %v, expected %v", c.s, c.ch, got, c.expected)
-		}
-	}
-}
+// Tests for shared helpers
 
 func TestCountChars(t *testing.T) {
 	cases := []struct {
@@ -66,6 +43,55 @@ func TestCountChars(t *testing.T) {
 		}
 	}
 }
+
+func TestContains(t *testing.T) {
+	cases := []struct {
+		s        string
+		ch       rune
+		expected bool
+	}{
+		{"abc", 'a', true},
+		{"abc", 'b', true},
+		{"abc", 'c', true},
+		{"abc", 'd', false},
+		{"", 'a', false},
+		{"Hello World", ' ', true},
+		{"Hello World", 'H', true},
+		{"Hello World", 'h', false},
+		{"世界", '世', true},
+	}
+
+	for _, c := range cases {
+		got := contains(c.s, c.ch)
+		if got != c.expected {
+			t.Errorf("contains(%q, %c) == %v, expected %v", c.s, c.ch, got, c.expected)
+		}
+	}
+}
+
+func TestToBinary(t *testing.T) {
+	cases := []struct {
+		n        int
+		expected string
+	}{
+		{0, "0"},
+		{1, "1"},
+		{2, "10"},
+		{3, "11"},
+		{4, "100"},
+		{10, "1010"},
+		{2024, "11111101000"},
+	}
+
+	for _, c := range cases {
+		got := toBinary(c.n)
+		if got != c.expected {
+			t.Errorf("toBinary(%d) == %q, expected %q", c.n, got, c.expected)
+		}
+	}
+}
+
+// Tests for the problems
 
 func TestConvertTemperature(t *testing.T) {
 	cases := []struct {
