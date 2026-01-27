@@ -7,6 +7,41 @@ import (
 	"testing"
 )
 
+func TestCountChars(t *testing.T) {
+	cases := []struct {
+		s        string
+		expected map[rune]int
+	}{
+		{"abc", map[rune]int{'a': 1, 'b': 1, 'c': 1}},
+		{"aaabbc", map[rune]int{'a': 3, 'b': 2, 'c': 1}},
+		{"", map[rune]int{}},
+		{"zz", map[rune]int{'z': 2}},
+		{"a!", map[rune]int{'a': 1, '!': 1}},
+	}
+
+	for _, c := range cases {
+		got := countChars(c.s)
+		// Since countChars initializes 'a'-'z' with 0, we need to handle that in comparison
+		// or adjust our expectation.
+		// Let's check only the runes we care about or check all 'a'-'z'.
+
+		for r := 'a'; r <= 'z'; r++ {
+			expCount := c.expected[r]
+			if got[r] != expCount {
+				t.Errorf("countChars(%q)[%c] == %d, expected %d", c.s, r, got[r], expCount)
+			}
+		}
+
+		for r, count := range got {
+			if r < 'a' || r > 'z' {
+				if count != c.expected[r] {
+					t.Errorf("countChars(%q)[%c] == %d, expected %d", c.s, r, count, c.expected[r])
+				}
+			}
+		}
+	}
+}
+
 func TestConvertTemperature(t *testing.T) {
 	cases := []struct {
 		celsius  float64

@@ -5,6 +5,44 @@ import (
 	"strconv"
 )
 
+// Shared Helpers
+
+func countChars(s string) map[rune]int {
+	charMap := make(map[rune]int)
+	for ch := 'a'; ch <= 'z'; ch++ {
+		charMap[ch] = 0
+	}
+
+	for _, ch := range s {
+		charMap[ch]++
+	}
+
+	return charMap
+}
+
+func contains(s string, ch rune) bool {
+	for _, c := range s {
+		if c == ch {
+			return true
+		}
+	}
+	return false
+}
+
+func toBinary(n int) string {
+	if n == 0 {
+		return "0"
+	}
+
+	result := ""
+	for n > 0 {
+		bit := n % 2
+		result = strconv.Itoa(bit) + result
+		n /= 2
+	}
+	return result
+}
+
 // https://leetcode.com/problems/convert-the-temperature/
 
 func convertTemperature(celsius float64) []float64 {
@@ -32,28 +70,6 @@ func maxFreqSum(s string) int {
 	}
 
 	return maxVowel + maxConsonant
-}
-
-func countChars(s string) map[rune]int {
-	charMap := make(map[rune]int)
-	for ch := 'a'; ch <= 'z'; ch++ {
-		charMap[ch] = 0
-	}
-
-	for _, ch := range s {
-		charMap[ch]++
-	}
-
-	return charMap
-}
-
-func contains(s string, ch rune) bool {
-	for _, c := range s {
-		if c == ch {
-			return true
-		}
-	}
-	return false
 }
 
 // https://leetcode.com/problems/filter-characters-by-frequency/
@@ -127,20 +143,6 @@ func convertDateToBinary(date string) string {
 	dayBin := toBinary(dayInt)
 
 	return fmt.Sprintf("%s-%s-%s", yearBin, monthBin, dayBin)
-}
-
-func toBinary(n int) string {
-	if n == 0 {
-		return "0"
-	}
-
-	result := ""
-	for n > 0 {
-		bit := n % 2
-		result = strconv.Itoa(bit) + result
-		n /= 2
-	}
-	return result
 }
 
 // https://leetcode.com/problems/reverse-degree-of-a-string/
