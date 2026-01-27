@@ -232,3 +232,25 @@ func TestReverseDegree(t *testing.T) {
 		}
 	}
 }
+
+func TestCountConsistentStrings(t *testing.T) {
+	cases := []struct {
+		allowed  string
+		words    []string
+		expected int
+	}{
+		{"ab", []string{"ad", "bd", "aaab", "baa", "badab"}, 2},
+		{"abc", []string{"a", "b", "c", "ab", "ac", "bc", "abc"}, 7},
+		{"cad", []string{"cc", "acd", "b", "ba", "bac", "bad", "ac", "d"}, 4},
+	}
+
+	for _, c := range cases {
+		got := countConsistentStrings(c.allowed, c.words)
+		if got != c.expected {
+			// Join the strings with a comma
+			wordsStr := strings.Join(c.words, ", ")
+
+			t.Errorf("countConsistentStrings(%s, {%s}) != %d, got %d\n", c.allowed, wordsStr, c.expected, got)
+		}
+	}
+}

@@ -158,3 +158,25 @@ func reverseDegree(s string) int {
 
 	return sum
 }
+
+// https://leetcode.com/problems/count-the-number-of-consistent-strings/
+
+func countConsistentStrings(allowed string, words []string) int {
+	count := 0
+
+	for _, word := range words {
+		notAllowedFound := false
+
+		for i := 0; i < len(word) && !notAllowedFound; i++ {
+			if !contains(allowed, rune(word[i])) {
+				notAllowedFound = true
+			}
+		}
+
+		if !notAllowedFound {
+			count++
+		}
+	}
+
+	return count
+}
