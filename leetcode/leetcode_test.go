@@ -254,3 +254,21 @@ func TestCountConsistentStrings(t *testing.T) {
 		}
 	}
 }
+
+func TestSmallestEvenMultiple(t *testing.T) {
+	cases := []struct {
+		input    int
+		expected int
+	}{
+		{5, 10},
+		{6, 6},
+	}
+
+	for _, c := range cases {
+		got := smallestEvenMultiple(c.input)
+		if got != c.expected {
+
+			t.Errorf("smallestEvenMultiple(%d) != %d, got %d\n", c.input, c.expected, got)
+		}
+	}
+}
