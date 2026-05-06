@@ -189,3 +189,18 @@ func smallestEvenMultiple(n int) int {
 	}
 	return n * 2
 }
+
+// https://leetcode.com/problems/find-the-degree-of-each-vertex/
+
+func findDegrees(matrix [][]int) []int {
+	degrees := make([]int, len(matrix))
+
+	for i := range matrix {
+		degree := 0
+		for j := range matrix[i] {
+			degree += matrix[i][j]
+		}
+		degrees[i] = degree
+	}
+	return degrees
+}

@@ -272,3 +272,28 @@ func TestSmallestEvenMultiple(t *testing.T) {
 		}
 	}
 }
+
+func TestFindDegrees(t *testing.T) {
+	cases := []struct {
+		matrix   [][]int
+		expected []int
+	}{
+		{[][]int{{0, 1, 1}, {1, 0, 1}, {1, 1, 0}}, []int{2, 2, 2}},
+		{[][]int{{0, 1, 0}, {1, 0, 0}, {0, 0, 0}}, []int{1, 1, 0}},
+		{[][]int{{0}}, []int{0}},
+	}
+
+	for _, c := range cases {
+		got := findDegrees(c.matrix)
+		if len(got) != len(c.expected) {
+			t.Errorf("findDegrees(%v) != %v, got %v\n", c.matrix, c.expected, got)
+			continue
+		}
+		for i := range got {
+			if got[i] != c.expected[i] {
+				t.Errorf("findDegrees(%v)[%d] != %d, got %d\n", c.matrix, i, c.expected[i], got[i])
+				break
+			}
+		}
+	}
+}
