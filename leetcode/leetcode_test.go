@@ -297,3 +297,21 @@ func TestFindDegrees(t *testing.T) {
 		}
 	}
 }
+
+func TestFindPermutationDifference(t *testing.T) {
+	cases := []struct {
+		s        string
+		t        string
+		expected int
+	}{
+		{"abc", "bac", 2},
+		{"abcde", "edbac", 12},
+	}
+
+	for _, c := range cases {
+		got := findPermutationDifference(c.s, c.t)
+		if got != c.expected {
+			t.Errorf("findPermutationDifference(%q, %q) != %d, got %d\n", c.s, c.t, c.expected, got)
+		}
+	}
+}

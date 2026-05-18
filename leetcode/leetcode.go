@@ -204,3 +204,24 @@ func findDegrees(matrix [][]int) []int {
 	}
 	return degrees
 }
+
+// https://leetcode.com/problems/permutation-difference-between-two-strings/
+
+func findPermutationDifference(s string, t string) int {
+	total := 0
+
+	for i := 0; i < len(s); i++ {
+		for j := 0; j < len(t); j++ {
+			if s[i] == t[j] {
+				diff := i - j
+
+				if diff > 0 {
+					total += diff
+				} else {
+					total -= diff
+				}
+			}
+		}
+	}
+	return total
+}
