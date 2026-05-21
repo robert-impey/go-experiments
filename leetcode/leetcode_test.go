@@ -315,3 +315,21 @@ func TestFindPermutationDifference(t *testing.T) {
 		}
 	}
 }
+
+func TestCalculateTime(t *testing.T) {
+	cases := []struct {
+		keyboard string
+		word     string
+		expected int
+	}{
+		{"abcdefghijklmnopqrstuvwxyz", "cba", 4},
+		{"pqrstuvwxyzabcdefghijklmno", "leetcode", 73},
+	}
+
+	for _, c := range cases {
+		got := calculateTime(c.keyboard, c.word)
+		if got != c.expected {
+			t.Errorf("calculateTime(%q, %q) != %d, got %d\n", c.keyboard, c.word, c.expected, got)
+		}
+	}
+}

@@ -225,3 +225,26 @@ func findPermutationDifference(s string, t string) int {
 	}
 	return total
 }
+
+// https://leetcode.com/problems/single-row-keyboard/
+
+func calculateTime(keyboard string, word string) int {
+	time := 0
+
+	previous := 0
+	for i := range word {
+		for j := range keyboard {
+			if word[i] == keyboard[j] {
+				if j > previous {
+					time += j - previous
+				} else {
+					time += previous - j
+				}
+				previous = j
+				break
+			}
+		}
+	}
+
+	return time
+}
