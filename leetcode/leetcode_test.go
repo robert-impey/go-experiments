@@ -333,3 +333,21 @@ func TestCalculateTime(t *testing.T) {
 		}
 	}
 }
+
+func TestDigitFrequencyScore(t *testing.T) {
+	cases := []struct {
+		input    int
+		expected int
+	}{
+		{122, 5},
+		{101, 2},
+	}
+
+	for _, c := range cases {
+		got := digitFrequencyScore(c.input)
+		if got != c.expected {
+
+			t.Errorf("digitFrequencyScore(%d) != %d, got %d\n", c.input, c.expected, got)
+		}
+	}
+}

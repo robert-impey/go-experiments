@@ -248,3 +248,30 @@ func calculateTime(keyboard string, word string) int {
 
 	return time
 }
+
+// https://leetcode.com/problems/digit-frequency-score/
+
+func digitFrequencyScore(n int) int {
+	digits := make([]int, 10)
+
+	divisor := 10
+
+	for i := 0; i < 10; i++ {
+		rem := n % 10
+		digits[rem]++
+
+		if n < 10 {
+			break
+		}
+
+		n /= divisor
+	}
+
+	score := 0
+
+	for i, d := range digits {
+		score += i * d
+	}
+
+	return score
+}
