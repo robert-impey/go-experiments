@@ -28,7 +28,7 @@ func main() {
 	if err == nil {
 		fmt.Printf("The sum of a and b %s\n", vectorToString(sumOfAAndB))
 	} else {
-		log.Fatal(fmt.Sprintf("Error: %s\n", err))
+		log.Fatalf("Error: %s\n", err)
 	}
 
 	// Dot product of two vectors (page 37)
@@ -42,7 +42,7 @@ func main() {
 	if err == nil {
 		fmt.Printf("The dot product of u and v: %f\n", dotProduct)
 	} else {
-		log.Fatal(fmt.Sprintf("Error: %s\n", err))
+		log.Fatalf("Error: %s\n", err)
 	}
 }
 
