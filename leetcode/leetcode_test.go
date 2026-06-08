@@ -91,6 +91,53 @@ func TestToBinary(t *testing.T) {
 	}
 }
 
+func TestIntToDigits(t *testing.T) {
+	cases := []struct {
+		n         int
+		numDigits int
+		expected  []int
+	}{
+		{0, 1, []int{0}},
+		{1234, 4, []int{1, 2, 3, 4}},
+		{555, 3, []int{5, 5, 5}},
+	}
+
+	for _, c := range cases {
+		got := intToDigits(c.n, c.numDigits)
+		if len(got) == len(c.expected) {
+			for i, digit := range got {
+				if digit != c.expected[i] {
+					t.Errorf("intToDigits(%d) == %v, expected %v", c.n, got, c.expected)
+					break
+				}
+			}
+		} else {
+			t.Errorf("len(intToDigits(%d, %d) == %d, expected %d", c.n, c.numDigits, len(got), len(c.expected))
+		}
+	}
+}
+
+func TestCountDigits(t *testing.T) {
+	cases := []struct {
+		n        int
+		expected []int
+	}{
+		{0, []int{1, 0, 0, 0, 0, 0, 0, 0, 0, 0}},
+		{1234, []int{0, 1, 1, 1, 1, 0, 0, 0, 0, 0}},
+		{555, []int{0, 0, 0, 0, 0, 3, 0, 0, 0, 0}},
+	}
+
+	for _, c := range cases {
+		got := countDigits(c.n)
+		for i, digit := range got {
+			if digit != c.expected[i] {
+				t.Errorf("countDigits(%d) == %v, expected %v", c.n, got, c.expected)
+				break
+			}
+		}
+	}
+}
+
 // Tests for the problems
 
 func TestConvertTemperature(t *testing.T) {

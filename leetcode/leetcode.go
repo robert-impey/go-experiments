@@ -43,6 +43,49 @@ func toBinary(n int) string {
 	return result
 }
 
+func intToDigits(n, numDigits int) []int {
+	digits := make([]int, numDigits)
+
+	divisor := 10
+	finalIndex := numDigits - 1
+	for i := 0; i < numDigits; i++ {
+		rem := n % 10
+		digits[finalIndex-i] = rem
+
+		if n < 10 {
+			break
+		}
+
+		n /= divisor
+	}
+
+	return digits
+}
+
+func countDigits(n int) []int {
+	digits := intToDigits(n, 10)
+	counts := make([]int, 10)
+
+	inLeadingZeroes := true
+	for i, digit := range digits {
+		if inLeadingZeroes {
+			if digit == 0 {
+				if 9 == i {
+					counts[0] = 1
+				}
+			} else {
+				inLeadingZeroes = false
+			}
+		}
+
+		if !inLeadingZeroes {
+			counts[digit]++
+		}
+	}
+
+	return counts
+}
+
 // https://leetcode.com/problems/convert-the-temperature/
 
 func convertTemperature(celsius float64) []float64 {
@@ -252,24 +295,11 @@ func calculateTime(keyboard string, word string) int {
 // https://leetcode.com/problems/digit-frequency-score/
 
 func digitFrequencyScore(n int) int {
-	digits := make([]int, 10)
-
-	divisor := 10
-
-	for i := 0; i < 10; i++ {
-		rem := n % 10
-		digits[rem]++
-
-		if n < 10 {
-			break
-		}
-
-		n /= divisor
-	}
+	digitCounts := countDigits(n)
 
 	score := 0
 
-	for i, d := range digits {
+	for i, d := range digitCounts {
 		score += i * d
 	}
 
