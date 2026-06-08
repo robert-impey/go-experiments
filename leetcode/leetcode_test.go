@@ -398,3 +398,22 @@ func TestDigitFrequencyScore(t *testing.T) {
 		}
 	}
 }
+
+func TestMinElement(t *testing.T) {
+	cases := []struct {
+		input    []int
+		expected int
+	}{
+		{[]int{10, 12, 13, 14}, 1},
+		{[]int{1, 2, 3, 4}, 1},
+		{[]int{999, 19, 199}, 10},
+	}
+
+	for _, c := range cases {
+		got := minElement(c.input)
+		if got != c.expected {
+
+			t.Errorf("minElement(%v) != %d, got %d\n", c.input, c.expected, got)
+		}
+	}
+}

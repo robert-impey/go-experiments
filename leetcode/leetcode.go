@@ -305,3 +305,25 @@ func digitFrequencyScore(n int) int {
 
 	return score
 }
+
+// https://leetcode.com/problems/minimum-element-after-replacement-with-digit-sum/
+
+func minElement(nums []int) int {
+	minEle := 46
+
+	for _, num := range nums {
+		digits := intToDigits(num, 5)
+
+		sum := 0
+
+		for _, d := range digits {
+			sum += d
+		}
+
+		if sum < minEle {
+			minEle = sum
+		}
+	}
+
+	return minEle
+}
