@@ -48,7 +48,7 @@ func intToDigits(n, numDigits int) []int {
 
 	divisor := 10
 	finalIndex := numDigits - 1
-	for i := 0; i < numDigits; i++ {
+	for i := range numDigits {
 		rem := n % 10
 		digits[finalIndex-i] = rem
 
